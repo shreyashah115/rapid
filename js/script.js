@@ -14,6 +14,7 @@ theForm.addEventListener(`submit`, (event) => {
     .then((response) => {
       response.json().then((response) => {
         let data = response.d;
+        console.log(data);
         let section = document.querySelector(`.allmovies`);
         // check if data exists, else ask user to input again
         if (!data) {
@@ -23,7 +24,10 @@ theForm.addEventListener(`submit`, (event) => {
           return;
         }
         data.forEach((element) => {
-          let image = element.i.imageUrl;
+          let images = element.i || ``;
+          let image =
+            images.imageUrl ||
+            `https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/832px-No-Image-Placeholder.svg.png`;
           let name = element.l;
           let actors = element.s || ``;
           movies.push({ actors: actors, name: name, image: image });
