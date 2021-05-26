@@ -15,6 +15,7 @@ theForm.addEventListener(`submit`, (event) => {
       response.json().then((response) => {
         let data = response.d;
         let section = document.querySelector(`.allmovies`);
+        // check if data exists, else ask user to input again
         if (!data) {
           let query = document.querySelector(`#query`);
           query.value = ``;
@@ -32,6 +33,7 @@ theForm.addEventListener(`submit`, (event) => {
         section.style.display = `grid`;
         section.style.gridTemplateColumns = `1fr 1fr 1fr`;
 
+        // Populate the layout using the data obtained from the API response
         movies.forEach((element) => {
           const article = document.createElement(`article`);
           article.classList.add(`movie`);
@@ -51,7 +53,8 @@ theForm.addEventListener(`submit`, (event) => {
     });
 });
 
-const changeStyle = (windowSize) => {
+// changes the layout as per the size of the screen
+const changeStyle = () => {
   let section = document.querySelector(`.allmovies`);
   if (window.matchMedia("(max-width: 40em)").matches) {
     section.style.display = `block`;
