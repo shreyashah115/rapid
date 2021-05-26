@@ -28,8 +28,10 @@ theForm.addEventListener(`submit`, (event) => {
           movies.push({ actors: actors, name: name, image: image });
         });
         section.innerHTML = ``;
+
         section.style.display = `grid`;
         section.style.gridTemplateColumns = `1fr 1fr 1fr`;
+
         movies.forEach((element) => {
           const article = document.createElement(`article`);
           article.classList.add(`movie`);
@@ -48,3 +50,18 @@ theForm.addEventListener(`submit`, (event) => {
       console.error(err);
     });
 });
+
+const changeStyle = (windowSize) => {
+  let section = document.querySelector(`.allmovies`);
+  if (window.matchMedia("(max-width: 40em)").matches) {
+    section.style.display = `block`;
+  } else if (window.matchMedia("(max-width: 62em)").matches) {
+    section.style.display = `grid`;
+    section.style.gridTemplateColumns = `1fr 1fr`;
+  } else {
+    section.style.display = `grid`;
+    section.style.gridTemplateColumns = `1fr 1fr 1fr`;
+  }
+};
+
+window.addEventListener("resize", changeStyle);
