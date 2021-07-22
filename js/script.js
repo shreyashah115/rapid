@@ -7,7 +7,7 @@ theForm.addEventListener(`submit`, (event) => {
   fetch(`https://imdb8.p.rapidapi.com/auto-complete?q=${query}`, {
     method: "GET",
     headers: {
-      "x-rapidapi-key": process.env.API_KEY,
+      "x-rapidapi-key": "307b52db22msh61653aee9f42227p1a7986jsnd58b519186fa",
       "x-rapidapi-host": "imdb8.p.rapidapi.com",
     },
   })
